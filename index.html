@@ -1,0 +1,72 @@
+<script>
+let playerSelection = prompt("Please Select One", "Rock/Paper/Scissors");
+let computerSelection = computerPlay();
+function computerPlay() {
+   let choices = ["Rock", "Paper", "Scissors"];
+   let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+   return randomChoice
+}
+
+function playOneRound(playerSelection, computerSelection) {
+   if (computerSelection == "Scissors" && playerSelection == "Rock") {
+       return "You won! Rock beats Scissors"; 
+   }
+   else if (computerSelection == "Scissors" && playerSelection == "Scissors") {
+       return "You tied! Go again!"; 
+   }
+   else if (computerSelection == "Scissors" && playerSelection == "Paper") {
+       return "You lost! Scissors beats Paper"; 
+   }
+   else if (computerSelection == "Rock" && playerSelection == "Rock") {
+       return "You tied! Go again!"; 
+   }
+   else if (computerSelection == "Rock" && playerSelection == "Paper") {
+       return "You won! Paper beats Rock"; 
+   }
+   else if (computerSelection == "Rock" && playerSelection == "Scissors") {
+       return "You lost! Rock beats Scissors"; 
+   }
+   else if (computerSelection == "Paper" && playerSelection == "Rock") {
+       return "You lost! Rock beats Paper"; 
+   }
+   else if (computerSelection == "Paper" && playerSelection == "Scissors") {
+       return "You won! Scissors beats Paper"; 
+   }
+   else if (computerSelection == "Paper" && playerSelection == "Paper") {
+       return "You tied! Go again!"; 
+   }
+   else prompt("Error, try again. The answer is case sensitive.", "Rock/Paper/Scissors")
+}
+
+
+
+
+function game() {
+   let playerScore = 0;
+   let computerScore = 0;
+   let ties = 0;
+   for (var i = 0; i < 5; i++) {
+       let computerSelection = (computerPlay());
+       result = playOneRound(computerSelection, playerSelection);
+       
+       console.log(result); 
+       
+   if (result.includes("won", 0)) {
+       ++playerScore;
+
+   }
+   else if (result.includes("lost", 0)) {
+       ++computerScore;  
+   }
+   else ++ties;
+}
+
+if (playerScore > computerScore) {
+   console.log("Congratulations you won! The score was [You Won: " + playerScore + " - Lost: " + computerScore + " and Tied: " + ties + "]")
+}
+else if (playerScore = computerScore) {
+   console.log("You tied! The score was [You Won: " + playerScore + " - Lost: " + computerScore + " and Tied: " + ties + "]");
+}
+else console.log("Sorry, you lost. The score was [You Won: " + playerScore + " - Lost: " + computerScore + " and Tied: " + ties + "]")
+}
+</script>
